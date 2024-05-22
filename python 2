@@ -1,0 +1,36 @@
+import random
+
+def generate_number():
+    return random.randint(1, 100)
+
+def check_guess(guess, number):
+    if guess < number:
+        return "Too low"
+    elif guess > number:
+        return "Too high"
+    else:
+        return "Congratulations! You guessed it!"
+
+def main():
+    print("🌟 Welcome to Guess the Number! 🌟")
+    name = input("👋 Hi there! What's your name? ")
+    print(f"🎉 Welcome, {name}! Let's play a game!")
+    print("🤔 I'm thinking of a number between 1 and 100. Can you guess it?")
+    
+    number = generate_number()
+    
+    while True:
+        try:
+            guess = int(input("Take a guess: "))
+            result = check_guess(guess, number)
+            print(result)
+            
+            if result == "Congratulations! You guessed it!":
+                break
+        except ValueError:
+            print("❗️ Please enter a valid number.")
+
+    print("🎊 Thanks for playing! I hope you had fun!")
+
+if __name__ == "__main__":
+    main()
